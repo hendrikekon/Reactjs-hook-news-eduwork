@@ -7,12 +7,22 @@ const NewsHook = () => {
     const [articles, setArticles] = useState([]);
     const [cari, setCari] = useState('');
 
-    useEffect(() => {
-      fetchNews('latest');
-    }, []);
+    // useEffect(() => {
+    //   fetchNews('latest');
+    // }, []);
+
+    // useEffect(() => {
+    //     fetchNews(cari || 'latest')
+    // }, [cari]);
 
     useEffect(() => {
-        fetchNews(cari || 'latest')
+        const debounceTimeout : Timeout =  setTimeout(() => {
+            fetchNews(cari || 'latest')
+        }, 1000)
+        
+        return () => {
+            clearTimeout(debounceTimeout)
+        }
     }, [cari]);
 
     //note belajar: perbedaan hook. hook tidak menggunakan this, this.state dan this.setState . state dan setstate diganti.
