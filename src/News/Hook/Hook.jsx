@@ -16,7 +16,7 @@ const NewsHook = () => {
     // }, [cari]);
 
     useEffect(() => {
-        const debounceTimeout =  setTimeout(() => {
+        const debounceTimeout = setTimeout(() => {
             fetchNews(cari || 'latest')
         }, 1000)
         
